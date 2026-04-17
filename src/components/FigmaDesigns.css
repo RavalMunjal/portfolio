@@ -1,0 +1,270 @@
+/* ── FigmaDesigns Section ────────────────────────────── */
+
+.fd-section {
+  /* inherits .section padding from index.css */
+}
+
+/* Section header */
+.fd-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.fd-heading {
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(to right, #fff, #888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 14px;
+}
+
+.fd-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Outer wrapper ── */
+.fd-wrapper {
+  position: relative;
+}
+
+/* ── Scrollable card track ── */
+.fd-track {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  cursor: grab;
+  /* hide scrollbar visually — progress bar is the indicator */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+  /* touch devices */
+  -webkit-overflow-scrolling: touch;
+}
+
+.fd-track::-webkit-scrollbar {
+  display: none;
+}
+
+.fd-track.fd-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+/* ── Individual card ── */
+.fd-card {
+  flex: 0 0 300px;
+  background: var(--bg-card);
+  border: 0.5px solid var(--glass-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.fd-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ── Preview area ── */
+.fd-preview {
+  height: 195px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.fd-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.45s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+.fd-card:hover .fd-preview-img {
+  transform: scale(1.06);
+}
+
+.fd-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(10, 10, 25, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.fd-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+  /* bg + color set inline */
+}
+
+/* ── Card body ── */
+.fd-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fd-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.fd-tool-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.fd-tool-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9B59F5;
+  flex-shrink: 0;
+}
+
+.fd-tools {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.fd-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fd-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.fd-open-btn {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9B59F5;
+  background: rgba(155, 89, 245, 0.1);
+  border: 0.5px solid rgba(155, 89, 245, 0.35);
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  font-family: var(--font-main);
+}
+
+.fd-open-btn:hover {
+  background: rgba(155, 89, 245, 0.2);
+  color: #b57cff;
+}
+
+/* ── Progress bar ── */
+.fd-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fd-progress-thumb {
+  width: 40%;
+  height: 100%;
+  background: #9B59F5;
+  border-radius: 999px;
+  margin-left: 0%;
+  transition: margin-left 0.05s linear;
+}
+
+/* ── Arrow buttons ── */
+.fd-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.fd-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  font-family: var(--font-main);
+}
+
+.fd-arrow:hover {
+  border-color: #9B59F5;
+  background: rgba(155, 89, 245, 0.12);
+  color: #b57cff;
+}
+
+/* ── Screen reader only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .fd-heading {
+    font-size: 32px;
+  }
+
+  .fd-card {
+    flex: 0 0 260px;
+  }
+}

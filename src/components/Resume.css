@@ -1,0 +1,663 @@
+/* ================================================================
+   RESUME — Print-First A4 Design
+   The modal shows the resume at ~A4 proportions (794×1123px).
+   On print, it expands to fill the real A4 paper perfectly.
+   ================================================================ */
+
+/* ── Screen: Overlay ── */
+.rOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 10, 25, 0.92);
+    backdrop-filter: blur(10px);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    animation: rFadeIn 0.2s ease;
+}
+
+/* ── Toolbar (screen only) ── */
+.rToolbar {
+    width: 100%;
+    background: #0d1626;
+    border-bottom: 1px solid #1e304d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    flex-shrink: 0;
+    gap: 12px;
+}
+
+.rToolbarTitle {
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.rToolbarBtns {
+    display: flex;
+    gap: 8px;
+}
+
+.rBtn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.07);
+    color: #e2e8f0;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.rBtn:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.rBtnPrimary {
+    background: #4f46e5;
+    border-color: #4f46e5;
+    color: #fff;
+}
+
+.rBtnPrimary:hover {
+    background: #3730a3;
+}
+
+/* ── Page wrapper (scrollable area) ── */
+.rPageWrap {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px 32px;
+}
+
+/* ── The A4 page itself ──
+   794 × 1123 px = A4 at 96dpi
+   We scale it at 75% on screen so it fits visible area.
+   On print it will be 100% / real A4.
+*/
+.rPage {
+    width: 794px;
+    min-height: 1123px;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+    border-radius: 2px;
+    overflow: hidden;
+    transform-origin: top center;
+    flex-shrink: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ================================================================
+   SIDEBAR
+   ================================================================ */
+.rSide {
+    width: 210px;
+    flex-shrink: 0;
+    background: #1a2744;
+    color: #c8d8f0;
+    padding: 20px 14px 20px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Avatar */
+.rAvatarWrap {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #4f46e5;
+    margin: 0 auto 14px;
+    flex-shrink: 0;
+}
+
+.rAvatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Sidebar block */
+.rSideBlock {
+    margin-bottom: 13px;
+}
+
+.rSideHead {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #6366f1;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+    padding-bottom: 4px;
+    margin-bottom: 7px;
+}
+
+/* Generic list */
+.rSideList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rSideList li {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 9px;
+    line-height: 1.4;
+    color: #a8c0dc;
+    word-break: break-all;
+}
+
+.rSideList li a {
+    color: #a8c0dc;
+    text-decoration: none;
+}
+
+.rIcon {
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 700;
+    background: rgba(37, 99, 235, 0.25);
+    color: #60a5fa;
+    border-radius: 3px;
+    padding: 0px 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* Bullet skill list */
+.rBulletList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rBulletList li {
+    font-size: 9px;
+    color: #a8c0dc;
+    line-height: 1.4;
+    padding-left: 10px;
+    position: relative;
+}
+
+.rBulletList li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #6366f1;
+    font-size: 8px;
+}
+
+/* Education */
+.rEdu {
+    font-size: 9px;
+    color: #a8c0dc;
+}
+
+.rEduTitle {
+    font-weight: 700;
+    font-size: 10px;
+    color: #e2e8f0;
+}
+
+.rEduSub {
+    margin-top: 1px;
+}
+
+.rEduYear {
+    margin-top: 2px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 9px;
+}
+
+/* Certifications */
+.rCerts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rCerts li {
+    font-size: 9px;
+    color: #a8c0dc;
+}
+
+.rCertName {
+    font-weight: 600;
+    color: #cde0f8;
+    font-size: 9px;
+}
+
+.rCertMeta {
+    font-size: 8px;
+    color: #6e8ab0;
+    margin-top: 1px;
+}
+
+/* Languages */
+.rLangs {
+    font-size: 9px;
+    color: #a8c0dc;
+}
+
+/* ================================================================
+   MAIN COLUMN
+   ================================================================ */
+.rMainCol {
+    flex: 1;
+    background: #fff;
+    padding: 18px 18px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+}
+
+/* ── Header ── */
+.rHeader {
+    border-bottom: 2px solid #dbeafe;
+    padding-bottom: 9px;
+    margin-bottom: 9px;
+}
+
+.rName {
+    font-size: 24px;
+    font-weight: 900;
+    color: #4f46e5;
+    margin: 0 0 2px;
+    letter-spacing: -0.4px;
+    line-height: 1.1;
+}
+
+.rRole {
+    font-size: 9px;
+    font-weight: 700;
+    color: #374151;
+    margin: 0 0 5px;
+    line-height: 1.35;
+}
+
+.rContactRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 14px;
+    font-size: 8px;
+    color: #6b7280;
+}
+
+/* ── Section ── */
+.rSec {
+    margin-bottom: 9px;
+}
+
+.rSecTitle {
+    font-size: 8.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #4f46e5;
+    border-bottom: 1.5px solid #dbeafe;
+    padding-bottom: 3px;
+    margin-bottom: 6px;
+}
+
+/* Summary text */
+.rText {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #374151;
+    margin: 0;
+    text-align: justify;
+}
+
+/* ── Experience ── */
+.rExpBlock {
+    margin-bottom: 4px;
+}
+
+.rExpRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.rExpCo {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.rExpDate {
+    font-size: 8px;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+.rExpRole {
+    font-size: 9px;
+    font-weight: 600;
+    color: #4f46e5;
+    margin: 1px 0 4px;
+}
+
+/* Bullets */
+.rBullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.rBullets li {
+    font-size: 8.5px;
+    line-height: 1.5;
+    color: #374151;
+    padding-left: 11px;
+    position: relative;
+}
+
+.rBullets li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #4f46e5;
+    font-size: 5.5px;
+    line-height: 2;
+}
+
+/* ── Projects ── */
+.rProjGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.rProj {
+    border: 1px solid #dbeafe;
+    border-radius: 5px;
+    padding: 6px 8px;
+    background: #f5f9ff;
+}
+
+.rProjRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 3px;
+}
+
+.rProjName {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #1e3a5f;
+}
+
+.rProjTag {
+    font-size: 7.5px;
+    background: #4f46e5;
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 5px;
+    white-space: nowrap;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.rProj p {
+    font-size: 8px;
+    color: #4b5563;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ================================================================
+   ANIMATIONS (screen only)
+   ================================================================ */
+@keyframes rFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ================================================================
+   PRINT — Makes the A4 page fill the paper perfectly, all white
+   ================================================================ */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    /* Force white background everywhere */
+    *,
+    *::before,
+    *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    html,
+    body {
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        overflow: hidden !important;
+    }
+
+    /* Hide everything except resume */
+    body>*:not(.rOverlay) {
+        display: none !important;
+    }
+
+    .navWrap,
+    .main,
+    .mobileNav,
+    #top {
+        display: none !important;
+    }
+
+    /* Flatten overlay */
+    .rOverlay {
+        position: static !important;
+        background: #fff !important;
+        padding: 0 !important;
+        display: block !important;
+        animation: none !important;
+        backdrop-filter: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        overflow: hidden !important;
+    }
+
+    /* Hide toolbar */
+    .rToolbar {
+        display: none !important;
+    }
+
+    /* Page wrap: no padding, no scroll */
+    .rPageWrap {
+        padding: 0 !important;
+        overflow: visible !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        display: block !important;
+        background: #fff !important;
+    }
+
+    /* The A4 page: fills the paper exactly */
+    .rPage {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        transform: none !important;
+        overflow: hidden !important;
+        page-break-after: avoid !important;
+    }
+
+    /* ── SIDEBAR: white background in print ── */
+    .rSide {
+        background: #f0f5ff !important;
+        width: 58mm !important;
+        padding: 10mm 5mm !important;
+        color: #1e293b !important;
+    }
+
+    .rAvatarWrap {
+        width: 20mm !important;
+        height: 20mm !important;
+        border-color: #4f46e5 !important;
+    }
+
+    .rSideHead {
+        color: #4f46e5 !important;
+        border-bottom-color: #bfdbfe !important;
+    }
+
+    .rSideList li,
+    .rBulletList li,
+    .rSideList li a,
+    .rLangs {
+        color: #374151 !important;
+    }
+
+    .rIcon {
+        background: #dbeafe !important;
+        color: #4f46e5 !important;
+    }
+
+    .rBulletList li::before,
+    .rSideList .rIcon {
+        color: #4f46e5 !important;
+    }
+
+    .rEduTitle {
+        color: #111827 !important;
+    }
+
+    .rEdu,
+    .rEduSub {
+        color: #374151 !important;
+    }
+
+    .rEduYear {
+        color: #4f46e5 !important;
+    }
+
+    .rCertName {
+        color: #111827 !important;
+    }
+
+    .rCerts li,
+    .rCertMeta {
+        color: #374151 !important;
+    }
+
+    /* ── MAIN col: pure white ── */
+    .rMainCol {
+        background: #fff !important;
+        padding: 10mm 7mm 8mm 6mm !important;
+    }
+
+    .rName {
+        color: #4f46e5 !important;
+    }
+
+    .rSecTitle {
+        color: #4f46e5 !important;
+        border-bottom-color: #dbeafe !important;
+    }
+
+    .rHeader {
+        border-bottom-color: #dbeafe !important;
+    }
+
+    .rExpCo {
+        color: #111827 !important;
+    }
+
+    .rExpRole {
+        color: #4f46e5 !important;
+    }
+
+    .rBullets li::before {
+        color: #4f46e5 !important;
+    }
+
+    .rProj {
+        background: #f5f9ff !important;
+        border-color: #dbeafe !important;
+    }
+
+    .rProjTag {
+        background: #4f46e5 !important;
+        color: #fff !important;
+    }
+
+    .rProjName {
+        color: #1e3a5f !important;
+    }
+
+    a {
+        text-decoration: none !important;
+        color: inherit !important;
+    }
+}
+
+/* ================================================================
+   RESPONSIVE (small screen modal scroll)
+   ================================================================ */
+@media (max-width: 860px) {
+    .rPage {
+        transform: scale(0.7);
+        transform-origin: top center;
+        margin-bottom: -23%;
+    }
+}
+
+@media (max-width: 600px) {
+    .rPage {
+        transform: scale(0.45);
+        transform-origin: top center;
+        margin-bottom: -55%;
+    }
+}

@@ -1,0 +1,40 @@
+﻿
+> portfolio@0.0.0 lint
+> eslint .
+
+
+C:\Users\kanda\OneDrive\Desktop\React.JS\Portfolio\src\App.jsx
+  401:11  error  Parsing error: Expected corresponding JSX closing tag for <section>
+
+C:\Users\kanda\OneDrive\Desktop\React.JS\Portfolio\src\components\HeroParticles.jsx
+  25:9  warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+  23 |         };
+  24 |
+> 25 |         class Particle {
+     |         ^^^^^^^^^^^^^^^^
+> 26 |             constructor() {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 27 |                 this.x = Math.random() * w;
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |             }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |         }
+     | ^^^^^^^^^^ Inline `class` declarations are not supported
+  66 |
+  67 |         const init = () => {
+  68 |             particles = [];
+
+  react-hooks/unsupported-syntax
+
+C:\Users\kanda\OneDrive\Desktop\React.JS\Portfolio\src\components\Skills3D.jsx
+   2:18  error  'useFrame' is defined but never used. Allowed unused vars must match /^[A-Z_]/u            no-unused-vars
+  49:15  error  'spherical' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  50:15  error  'phiSpan' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+  51:15  error  'thetaSpan' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 6 problems (5 errors, 1 warning)
+

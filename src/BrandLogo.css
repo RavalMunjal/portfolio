@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap');
+
+/* ---------- Brand Logo (Premium) ---------- */
+.brandLogo {
+    width: 52px;
+    height: 52px;
+    /* Rich dark background with subtle gradient */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Typography */
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to bottom right, #3b82f6, #8b5cf6, #3b82f6);
+    /* Primary Gradient Text */
+    letter-spacing: -1px;
+
+    /* Glass/Border Effect */
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    /* Subtle Blue Border */
+    box-shadow:
+        0 10px 30px -10px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(59, 130, 246, 0.05);
+
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+}
+
+/* Metallic Shine Effect */
+.brandLogo::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(115deg,
+            transparent 40%,
+            rgba(59, 130, 246, 0.4) 45%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(59, 130, 246, 0.4) 55%,
+            transparent 60%);
+    transform: rotate(15deg);
+    animation: premiumShine 6s infinite;
+    z-index: -1;
+}
+
+/* Hover State */
+.brand:hover .brandLogo {
+    transform: translateY(-2px) scale(1.05);
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow:
+        0 20px 40px -10px rgba(59, 130, 246, 0.15),
+        0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+@keyframes premiumShine {
+    0% {
+        transform: translate(-50%, -50%) rotate(25deg);
+    }
+
+    15% {
+        transform: translate(20%, 20%) rotate(25deg);
+    }
+
+    100% {
+        transform: translate(50%, 50%) rotate(25deg);
+    }
+}
