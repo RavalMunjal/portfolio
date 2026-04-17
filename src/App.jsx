@@ -572,11 +572,8 @@ function scrollToId(id) {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-import ResumeModal from "./components/ResumeModal";
-
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showResume, setShowResume] = useState(false);
   const [sendLoading, setSendLoading] = useState(false);
   const [sendSuccess, setSendSuccess] = useState(false);
 
@@ -649,9 +646,9 @@ export default function App() {
                 {item.label}
               </button>
             ))}
-            <button className="navBtn navResume" onClick={() => setShowResume(true)}>
+            <a className="navBtn navResume" href="https://docs.google.com/document/d/1mMAbvivOZHAGnepaqW6ilohpCH0U6d8C/edit" target="_blank" rel="noreferrer">
               Resume
-            </button>
+            </a>
           </div>
 
           <button className="menuBtn" onClick={toggleMenu} aria-label="Menu">
@@ -672,9 +669,9 @@ export default function App() {
               {item.label}
             </button>
           ))}
-          <button className="mNavBtn mNavResume" onClick={() => { setShowResume(true); setMenuOpen(false); }}>
+          <a className="mNavBtn mNavResume" href="https://docs.google.com/document/d/1mMAbvivOZHAGnepaqW6ilohpCH0U6d8C/edit" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>
             Resume
-          </button>
+          </a>
         </div>
       </nav>
 
@@ -899,12 +896,6 @@ export default function App() {
           <p>© {new Date().getFullYear()} {DATA.name}. Built with React.</p>
         </footer>
       </main>
-
-      <ResumeModal
-        open={showResume}
-        onClose={() => setShowResume(false)}
-        data={DATA}
-      />
     </div>
   );
 }
