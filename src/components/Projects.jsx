@@ -10,6 +10,7 @@ const projectsData = [
     description: "Pixel-perfect clone of India's largest crypto trading platform WazirX, with responsive layout and interactive UI elements.",
     github: "https://github.com/RavalMunjal/All-Websites",
     live: "https://all-websites-git-main-ravalmunjals-projects.vercel.app/wazirX.com/B.html",
+    youtube: "https://youtu.be/TZx1ncGgGbo",
     image: "/projects/wazirx.png"
   },
   {
@@ -30,6 +31,7 @@ const projectsData = [
     description: "Clone of Aven's fintech landing page featuring home equity credit card with APR details, cashback info, and apply flow.",
     github: "https://github.com/RavalMunjal/All-Websites",
     live: "https://all-websites-git-main-ravalmunjals-projects.vercel.app/aven.com/new_clone/index.html",
+    youtube: "https://youtu.be/v_hG8gKpYVE",
     image: "/projects/aven.png"
   },
   {
@@ -40,6 +42,7 @@ const projectsData = [
     description: "Clone of Ashby's all-in-one recruiting platform landing page with AI notetaker feature section and enterprise customer logos.",
     github: "https://github.com/RavalMunjal/All-Websites",
     live: "https://all-websites-git-main-ravalmunjals-projects.vercel.app/Ashby.com/a.html",
+    youtube: "https://youtu.be/l6znhUWDL1w",
     image: "/projects/ashby.png"
   },
   {
@@ -50,6 +53,7 @@ const projectsData = [
     description: "Clone of Savaari's intercity cab booking site with city search, cab selection, and one-way/round-trip booking UI.",
     github: "https://github.com/RavalMunjal/All-Websites",
     live: "https://all-websites-git-main-ravalmunjals-projects.vercel.app/savari.com/savari.html",
+    youtube: "https://youtu.be/p3epjZ7Y5Eo",
     image: "/projects/savaari.png"
   },
   {
@@ -197,7 +201,7 @@ export default function Projects() {
                   <p className="project-desc" title={p.description}>{p.description}</p>
 
                   {/* Footer buttons row */}
-                  <div className="project-footer">
+                  <div className="project-footer" style={{ flexWrap: 'wrap', gap: '8px' }}>
                     <button
                       className="btn-github"
                       data-github={p.github}
@@ -218,6 +222,19 @@ export default function Projects() {
                     >
                       View Live ↗
                     </button>
+
+                    {p.youtube && (
+                      <button
+                        className="btn-youtube"
+                        onClick={() => window.open(p.youtube, '_blank')}
+                        aria-label="View demo on YouTube"
+                      >
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        YouTube Demo
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

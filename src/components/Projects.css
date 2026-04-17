@@ -256,7 +256,9 @@
 /* Footer & Buttons */
 .project-footer {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
   align-items: center;
   margin-top: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -303,6 +305,30 @@
 }
 
 /* Fix SVG inside buttons */
-.btn-github svg {
+.btn-github svg, .btn-youtube svg {
   fill: currentColor;
+}
+
+.btn-youtube {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff4d4d;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.btn-youtube:hover {
+  background: rgba(255, 0, 0, 0.2);
+  color: #ffffff;
+  border-color: rgba(255, 0, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
 }

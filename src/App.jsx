@@ -542,22 +542,27 @@ function Modal({ open, onClose, children, title }) {
 }
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, scale: 0.95 },
   visible: {
     opacity: 1,
+    scale: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.2,
       delayChildren: 0.2,
+      duration: 0.8,
+      type: "spring",
+      bounce: 0.3
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -613,17 +618,17 @@ export default function App() {
       e.target,
       "wUsrpwghf1tZvsR-2"
     )
-    .then(() => {
-      setSendLoading(false);
-      setSendSuccess(true);
-      e.target.reset();
-      setTimeout(() => setSendSuccess(false), 5000);
-    })
-    .catch((error) => {
-      setSendLoading(false);
-      console.error("EmailJS Error:", error);
-      alert("Failed to send message. Please try again later.");
-    });
+      .then(() => {
+        setSendLoading(false);
+        setSendSuccess(true);
+        e.target.reset();
+        setTimeout(() => setSendSuccess(false), 5000);
+      })
+      .catch((error) => {
+        setSendLoading(false);
+        console.error("EmailJS Error:", error);
+        alert("Failed to send message. Please try again later.");
+      });
   };
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -721,11 +726,11 @@ export default function App() {
                 <motion.div
                   key={group.title}
                   className="skillCategoryCard"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60, rotateY: index % 2 === 0 ? -15 : 15 }}
+                  whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+                  transition={{ delay: index * 0.15, duration: 0.7, type: "spring", bounce: 0.4 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0, 243, 255, 0.15)" }}
                 >
                   <h3 className="skillCategoryTitle">{group.title}</h3>
                   <ul className="skillList">
@@ -746,12 +751,12 @@ export default function App() {
 
         {/* GAMES */}
         <section id="games" className="section">
-          <div className="container">
+          <div className="container" style={{ perspective: "1000px" }}>
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <SectionLabel
                 kicker="Interactive Fun"
@@ -764,11 +769,11 @@ export default function App() {
                 <motion.div
                   key={g.id}
                   className="gameCard"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: i * 0.07, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  initial={{ opacity: 0, rotateX: 45, y: 50 }}
+                  whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.15, type: "spring", bounce: 0.4 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileHover={{ y: -8, scale: 1.03 }}
                 >
                   <div className="gameCover" style={{
                     overflow: 'hidden'
@@ -795,7 +800,6 @@ export default function App() {
             </div>
           </div>
         </section>
-
         {/* FIGMA DESIGNS */}
         <FigmaDesigns />
 
@@ -803,10 +807,10 @@ export default function App() {
         <section id="hackathons" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: 80, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.7, type: "spring", bounce: 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <SectionLabel
                 kicker="Competitive Coding"
@@ -895,7 +899,6 @@ export default function App() {
           <p>© {new Date().getFullYear()} {DATA.name}. Built with React.</p>
         </footer>
       </main>
-
 
       <ResumeModal
         open={showResume}
