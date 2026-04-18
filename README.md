@@ -1,69 +1,77 @@
-<div align="center">
 
 # ✦ Portfolio
 
-**A space where design meets code.**  
-Built with React — crafted with care.
+# 👋 Hi, I'm Munjal Raval
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-black?style=for-the-badge)](https://your-link-here.vercel.app)
-
-</div>
+A developer who likes keeping things simple, fast, and useful.
 
 ---
 
-## About
+## 🌐 Live Portfolio
 
-This is my personal portfolio — a place to show who I am, what I build, and how I think.
-
-Every pixel here is intentional. I wanted something that felt *mine*, not just another template.
+👉 https://munjalraval-portfolio.vercel.app/
 
 ---
 
-## What's Inside
+## 🧭 What’s Inside
 
-- **Home** — First impression, short intro
-- **About** — Who I am, my background
-- **Projects** — Things I've actually built
-- **Contact** — How to reach me
+This portfolio is divided into multiple sections so everything is easy to explore:
 
----
+### 🧑 About
+A quick intro about me, my mindset, and how I approach building things.
 
-## Run It Locally
+### ⚡ Skills
+The tools and abilities I use to build real-world projects.
 
-```bash
-git clone https://github.com/your-username/portfolio.git
-cd portfolio
-npm install
-npm start
-```
+### 🎮 Games
+Fun projects and small builds that show logic and creativity.
 
-Opens at → http://localhost:3000
+### 🎨 Figma
+Design work and UI thinking before writing code.
 
----
+### 🏆 Hackathons
+My participation, ideas, and problem-solving under pressure.
 
-## Deploy
+### 📜 Certifications
+Proof of learning and consistency.
 
-Works out of the box with:
+### 🚀 Achievements
+Milestones that matter in my journey.
 
-- [Vercel](https://vercel.com) — just connect your repo
-- [Netlify](https://netlify.com) — drag & drop the `build/` folder
+### 📞 Contact
+Easy ways to reach out and connect.
 
-```bash
-npm run build
-```
+### 📄 Resume
+Quick access to my professional details.
 
 ---
 
-## Connect
+## 💡 Why This Portfolio is Different
 
-If you liked what you saw, let's talk.
-
-- 📧 youremail@gmail.com
-- 💼 [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- 🐙 [github.com/your-username](https://github.com/your-username)
+- Clean layout (no confusion)
+- Smooth navigation between sections
+- Focus on real work, not just theory
+- Built for both users and recruiters
 
 ---
 
-<div align="center">
-  <sub>Made with focus, frustration, and a lot of coffee ☕</sub>
-</div>
+## 👀 What You Should Do
+
+Just open the portfolio and explore each section.
+
+No need to guess — everything is clearly placed.
+
+---
+
+## 📬 Let’s Connect
+
+- 💼 Portfolio: https://munjalraval-portfolio.vercel.app/
+- 🐙 GitHub: https://github.com/RavalMunjal
+- 🔗 LinkedIn: https://www.linkedin.com/in/munjal-raval
+
+---
+
+## ⭐ One Line About Me
+
+I build things that people can actually use without thinking too much.
+
