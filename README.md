@@ -1,16 +1,69 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ✦ Portfolio
 
-Currently, two official plugins are available:
+**A space where design meets code.**  
+Built with React — crafted with care.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-black?style=for-the-badge)](https://your-link-here.vercel.app)
 
-## React Compiler
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## About
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This is my personal portfolio — a place to show who I am, what I build, and how I think.
+
+Every pixel here is intentional. I wanted something that felt *mine*, not just another template.
+
+---
+
+## What's Inside
+
+- **Home** — First impression, short intro
+- **About** — Who I am, my background
+- **Projects** — Things I've actually built
+- **Contact** — How to reach me
+
+---
+
+## Run It Locally
+
+```bash
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+npm install
+npm start
+```
+
+Opens at → http://localhost:3000
+
+---
+
+## Deploy
+
+Works out of the box with:
+
+- [Vercel](https://vercel.com) — just connect your repo
+- [Netlify](https://netlify.com) — drag & drop the `build/` folder
+
+```bash
+npm run build
+```
+
+---
+
+## Connect
+
+If you liked what you saw, let's talk.
+
+- 📧 youremail@gmail.com
+- 💼 [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
+- 🐙 [github.com/your-username](https://github.com/your-username)
+
+---
+
+<div align="center">
+  <sub>Made with focus, frustration, and a lot of coffee ☕</sub>
+</div>
