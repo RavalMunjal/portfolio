@@ -1,9 +1,4 @@
-
 # ✦ Portfolio
-
-# 👋 Hi, I'm Munjal Raval
-
-A developer who likes keeping things simple, fast, and useful.
 
 ---
 
@@ -58,20 +53,3 @@ Quick access to my professional details.
 ## 👀 What You Should Do
 
 Just open the portfolio and explore each section.
-
-No need to guess — everything is clearly placed.
-
----
-
-## 📬 Let’s Connect
-
-- 💼 Portfolio: https://munjalraval-portfolio.vercel.app/
-- 🐙 GitHub: https://github.com/RavalMunjal
-- 🔗 LinkedIn: https://www.linkedin.com/in/munjal-raval
-
----
-
-## ⭐ One Line About Me
-
-I build things that people can actually use without thinking too much.
-
